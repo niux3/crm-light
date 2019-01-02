@@ -1,0 +1,60 @@
+<mjml>
+    <mj-body>
+        <mj-section background-color="#c6ced1" full-width="full-width" padding="0">
+            <mj-column padding="0">
+                <mj-image padding="0" width="450px" src="http://image.noelshack.com/fichiers/2019/01/3/1546384980-content-header-happy-new-year-2019.png" />
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#fff">
+            <mj-column padding="0 15px">
+                <mj-text padding="10px 0" font-size="14px" line-height="22px" color="#4d4d4d">
+                    <p>
+                    {% if user.civilities == "Monsieur" %}
+                        Cher
+                    {% else %}
+                        Chère
+                    {% endif %}
+                    {% if user.polite == "t"%}
+                    {{ user.firstname }}, <br>
+                    Je te souhaite une touche :
+                    {% else %}
+                    {{ user.civilities }},<br>
+                    Je vous souhaite une touche :
+                    {% endif %}
+                    <br>
+                    de respect, d'ambition, de créativité,
+                    d'écoute, de défis, de passion 
+                    et d'excellence.
+                    </p>
+                    <p>
+                        <q style="display:block">{{ citation.content }}</q>
+                        <span style="display:block">{{ citation.author }}</span>
+                    </p>
+                    {% if user.extension != "" %}
+                    <p>ps : {{ user.extension }}</p>
+                    {% endif %}
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#fff" padding="0">
+            <mj-column padding="0">
+                <mj-divider padding="0" border-width="1px" border-style="solid" border-color="#c6ced1" />
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#fff">
+            <mj-column padding="0" width="25%">
+                <mj-image padding="0" align="center" width="80px" src="http://image.noelshack.com/fichiers/2019/01/3/1546426406-unnamed.png" />
+            </mj-column>
+            <mj-column padding="0 15px" width="75%">
+                <mj-text padding="0" font-size="14px" line-height="22px" color="#4d4d4d">
+                    <span style="display:block">Renaud Bourdeau </span>
+                    <span style="display:block">Tél : +33 603 617 839</span>
+                    <span style="display:block">LinkedIn : <a href="https://fr.linkedin.com/in/renaud-bourdeau-7639b944">https://fr.linkedin.com/in/renaud-bourdeau-7639b944</a></span>
+                    <span style="display:block">Skype : renaud.bourdeau </span>
+                    <span style="display:block">GitHub : <a href="https://github.com/niux3?tab=repositories">https://github.com/niux3?tab=repositories</a></span>
+                    <span style="display:block">GNU/Linux forever</span>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>
