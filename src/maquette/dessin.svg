@@ -306,19 +306,6 @@
          stdDeviation="1.5880837"
          id="feGaussianBlur2126" />
     </filter>
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter2280"
-       x="-0.0050630311"
-       width="1.0101261"
-       y="-0.092394219"
-       height="1.1847884">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.25017676"
-         id="feGaussianBlur2282" />
-    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -331,7 +318,7 @@
      inkscape:cx="489.49532"
      inkscape:cy="961.70753"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer13"
+     inkscape:current-layer="layer2"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -400,7 +387,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -408,8 +395,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="bg"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.58506578;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2306"
@@ -429,19 +415,7 @@
      inkscape:groupmode="layer"
      id="layer12"
      inkscape:label="header"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <text
-       id="text2246"
-       y="131.4319"
-       x="171.51003"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12088633px;line-height:1.25;font-family:'Caveat Brush';-inkscape-font-specification:'Caveat Brush';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.33399999;fill:#595959;fill-opacity:1;stroke:none;stroke-width:0.17802215;filter:url(#filter2280)"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:'Roboto Bold';fill:#595959;fill-opacity:1;stroke-width:0.17802215"
-         y="131.4319"
-         x="171.51003"
-         id="tspan2244"
-         sodipodi:role="line">UNE EXCELLENTE NOUVELLE ANNÉE</tspan></text>
+     style="display:inline">
     <g
        id="g2238"
        transform="matrix(0.43817555,0,0,0.43817555,-104.56031,34.105472)">
@@ -761,17 +735,6 @@
         </g>
       </g>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12088633px;line-height:1.25;font-family:'Caveat Brush';-inkscape-font-specification:'Caveat Brush';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.17802215"
-       x="172.03918"
-       y="130.90274"
-       id="text2242"><tspan
-         sodipodi:role="line"
-         id="tspan2240"
-         x="172.03918"
-         y="130.90274"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:'Roboto Bold';fill:#ffffff;fill-opacity:1;stroke-width:0.17802215">UNE EXCELLENTE NOUVELLE ANNÉE</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -779,8 +742,7 @@
      inkscape:label="content"
      style="display:inline">
     <g
-       aria-label="Lorem ipsum,
-dolor sit amet, consectetur adipisicing elit. Ratione, modi libero at ex id earum vitae ipsum expedita, incidunt temporibus maiores saepe, similique voluptas dolorem cum. Voluptatibus eos, doloremque minus?"
+       aria-label="Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Ratione, modi libero at ex id earum vitae ipsum expedita, incidunt temporibus maiores saepe, similique voluptas dolorem cum. Voluptatibus eos, doloremque minus?"
        transform="matrix(0.26458333,0,0,0.26458333,0,1.5875)"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Caveat Brush';-inkscape-font-specification:'Caveat Brush';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#4d4d4d;fill-opacity:1;stroke:none"
        id="flowRoot2290">

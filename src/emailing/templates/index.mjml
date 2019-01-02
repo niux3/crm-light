@@ -2,7 +2,17 @@
     <mj-body>
         <mj-section background-color="#c6ced1" full-width="full-width" padding="0">
             <mj-column padding="0">
-                <mj-image padding="0" width="450px" src="http://image.noelshack.com/fichiers/2019/01/3/1546384980-content-header-happy-new-year-2019.png" />
+                <mj-image padding="40px 0 20px" align="center" width="350px" src="http://image.noelshack.com/fichiers/2019/01/3/1546448304-new-year-email-template.png" />
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#c6ced1" full-width="full-width" padding="0">
+            <mj-column padding="0">
+                <mj-text padding="20px 0" align="center" font-size="16px" line-height="22px" color="#fff">
+                    <p>
+                        <q style="display:block"><em>{{ citation.content }}</em></q>
+                        <span style="display:block">{{ citation.author }}</span>
+                    </p>
+                </mj-text>
             </mj-column>
         </mj-section>
         <mj-section background-color="#fff">
@@ -23,15 +33,12 @@
                     {% endif %}
                     <br>
                     de respect, d'ambition, de créativité,
-                    d'écoute, de défis, de passion 
+                    d'écoute, de défis, de passion
                     et d'excellence.
                     </p>
-                    <p>
-                        <q style="display:block">{{ citation.content }}</q>
-                        <span style="display:block">{{ citation.author }}</span>
-                    </p>
+
                     {% if user.extension != "" %}
-                    <p>ps : {{ user.extension }}</p>
+                    <p>{{ user.extension }}</p>
                     {% endif %}
                 </mj-text>
             </mj-column>
