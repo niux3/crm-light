@@ -1,67 +1,81 @@
 <mjml>
-    <mj-body>
-        <mj-section background-color="#c6ced1" full-width="full-width" padding="0">
-            <mj-column padding="0">
-                <mj-image padding="40px 0 20px" align="center" width="350px" src="http://image.noelshack.com/fichiers/2019/01/3/1546448304-new-year-email-template.png" />
-            </mj-column>
-        </mj-section>
-        <mj-section background-color="#c6ced1" full-width="full-width" padding="0">
-            <mj-column padding="0">
-                <mj-text padding="20px 0" align="center" font-size="16px" line-height="22px" color="#fff">
-                    <p>
-                        <q style="display:block"><em>{{ citation.content }}</em></q>
-                        <span style="display:block">{{ citation.author }}</span>
-                    </p>
-                </mj-text>
-            </mj-column>
-        </mj-section>
-        <mj-section background-color="#fff">
-            <mj-column padding="0 15px">
-                <mj-text padding="10px 0" font-size="14px" line-height="22px" color="#4d4d4d">
-                    <p>
-                    {% if user.civilities == "Monsieur" %}
-                        Cher
-                    {% else %}
-                        Chère
-                    {% endif %}
-                    {% if user.polite == "t"%}
-                    {{ user.firstname }}, <br>
-                    Je te souhaite une touche :
-                    {% else %}
-                    {{ user.civilities }},<br>
-                    Je vous souhaite une touche :
-                    {% endif %}
-                    <br>
-                    de respect, d'ambition, de créativité,
-                    d'écoute, de défis, de passion
-                    et d'excellence.
-                    </p>
-
-                    {% if user.extension != "" %}
-                    <p>{{ user.extension }}</p>
-                    {% endif %}
-                </mj-text>
-            </mj-column>
-        </mj-section>
-        <mj-section background-color="#fff" padding="0">
-            <mj-column padding="0">
-                <mj-divider padding="0" border-width="1px" border-style="solid" border-color="#c6ced1" />
-            </mj-column>
-        </mj-section>
-        <mj-section background-color="#fff">
-            <mj-column padding="0" width="25%">
-                <mj-image padding="0" align="center" width="80px" src="http://image.noelshack.com/fichiers/2019/01/3/1546426406-unnamed.png" />
-            </mj-column>
-            <mj-column padding="0 15px" width="75%">
-                <mj-text padding="0" font-size="14px" line-height="22px" color="#4d4d4d">
-                    <span style="display:block">Renaud Bourdeau </span>
-                    <span style="display:block">Tél : +33 603 617 839</span>
-                    <span style="display:block">LinkedIn : <a href="https://fr.linkedin.com/in/renaud-bourdeau-7639b944">https://fr.linkedin.com/in/renaud-bourdeau-7639b944</a></span>
-                    <span style="display:block">Skype : renaud.bourdeau </span>
-                    <span style="display:block">GitHub : <a href="https://github.com/niux3?tab=repositories">https://github.com/niux3?tab=repositories</a></span>
-                    <span style="display:block">GNU/Linux forever</span>
-                </mj-text>
-            </mj-column>
-        </mj-section>
+    <mj-head>
+        <mj-style>
+            .left{
+                width:20% !important;
+                float:left;
+            }
+            .right{
+                width:80% !important;
+                float:right;
+            }
+        </mj-style>
+    </mj-head>
+    <mj-body background-color="#f5f5f5" width="800px">
+            <mj-section>
+                <mj-column>
+                    <mj-text align="center" color="#444">Si vous ne visualisez pas correctement cet email, <a style="color:#444; text-decoration:underline" href="https://rb-webstudio.go.yj.fr/mail/mail-online.html?{{ params }}">cliquez ici</a>.</mj-text>
+                </mj-column>
+            </mj-section>
+            <mj-section full-width="full-width" padding="10px 0 25px 0">
+                <mj-column css-class="left">
+                    <mj-image align="left" width="50" padding="0 0 25px 0" src="https://rb-webstudio.go.yj.fr/mail/img/logo-mail.png" href="https://rb-webstudio.go.yj.fr" alt="RB webstudio - digital designer - développeur frontend & backend - Python - TS/JS/ESnext - ExpressJS - React/Svelte - NodeJS" />
+                </mj-column>
+                <mj-column css-class="right">
+                    <mj-navbar hamburger="hamburger" ico-color="#444" align="right">
+                        <mj-navbar-link href="https://rb-webstudio.go.yj.fr/" color="#444" text-decoration="underline">&Agrave; PROPOS DE</mj-navbar-link>
+                        <mj-navbar-link href="https://rb-webstudio.go.yj.fr/#/projets" color="#444" text-decoration="underline">R&Eacute;ALISTATIONS</mj-navbar-link>
+                        <mj-navbar-link href="https://rb-webstudio.go.yj.fr/#/contact" color="#444" text-decoration="underline">CONTACT</mj-navbar-link>
+                    </mj-navbar>
+                </mj-column>
+            </mj-section>
+            <mj-section padding="50px 0 0">
+                <mj-column>
+                    <mj-text align="right">
+                        <h1 style="font-size: 24px;color:#444; line-height: 33px;margin: 0px;">Bonjour {{ contact }}, <br> Ma&icirc;trisez chaque aspect de vos projets, du front-end au back-end, avec mes comp&eacute;tences diversifi&eacute;es en d&eacute;veloppement !
+</h1>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+            <mj-section padding="10px 0 30px">
+                <mj-column>
+                    <mj-text align="left">
+                        <p style="font-size: 16px;color:#444; line-height: 24px;">
+Je suis d&eacute;veloppeur passionn&eacute;, avec une solide expertise en frontend (SvelteJS, ReactJS, VueJS) et backend (NodeJS/ExpressJS, Python, Django, Flask). Mes comp&eacute;tences en bases de donn&eacute;es MySQL et PostgreSQL compl&egrave;tent mon profil pour r&eacute;pondre aux besoins de votre &eacute;quipe.
+                        </p>
+                        <p style="font-size: 16px;color:#444; line-height: 24px;">
+Avec 15 ans d&rsquo;exp&eacute;rience, je cr&eacute;e des solutions innovantes et adapt&eacute;es aux environnements dynamiques.  Je reste &agrave; la pointe des nouvelles tendances pour garantir que vos projets b&eacute;n&eacute;ficient des derni&egrave;res avanc&eacute;es technologiques. Collaborons pour optimiser vos solutions existantes ou d&eacute;velopper des produits qui se d&eacute;marquent. Je suis disponible pour discuter de la fa&ccedil;on dont je peux aligner mes comp&eacute;tences sur vos besoins. Je serais ravi de convenir d&rsquo;un rendez-vous pour explorer comment je peux contribuer &agrave; vos projets. N&rsquo;h&eacute;sitez pas &agrave; me contacter. 
+                        </p>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+            <mj-section>
+                <mj-column>
+                    <mj-image align="center" src="https://rb-webstudio.go.yj.fr/mail/img/frontend.png" alt="" width="50" />
+                    <mj-text line-height="20px" font-size="15px" color="#444">Transformez vos projets avec une interface qui fait la diff&eacute;rence. D&eacute;veloppeur aguerri, je cr&eacute;e des exp&eacute;riences utilisateur engageantes et fluides, avec des interfaces responsives et performantes. Voyons ensemble comment concr&eacute;tiser votre vision.</mj-text>
+                </mj-column>
+                <mj-column>
+                    <mj-image align="center" src="https://rb-webstudio.go.yj.fr/mail/img/backend.png" alt="" width="50" />
+                    <mj-text line-height="20px" font-size="15px" color="#444">Boostez les performances de votre application avec une architecture backend solide. Je b&acirc;tis des syst&egrave;mes &eacute;volutifs et robustes, garantissant des solutions adapt&eacute;es &agrave; vos besoins. Confiez-moi votre infrastructure et concentrez-vous sur la croissance de votre entreprise.</mj-text>
+                </mj-column>
+                <mj-column>
+                    <mj-image align="center" src="https://rb-webstudio.go.yj.fr/mail/img/design-graphic.png" alt="" width="50" />
+                    <mj-text line-height="20px" font-size="15px" color="#444">Renforcez l'impact de votre marque avec une identit&eacute; visuelle coh&eacute;rente. Je vous aide &agrave; capter l&rsquo;essence de votre projet avec un langage graphique clair et attractif. Contactez-moi pour une exp&eacute;rience visuelle cr&eacute;ative.</mj-text>
+                </mj-column>
+            </mj-section>
+            <mj-section>
+                <mj-column>
+                    <mj-button align="center" border-radius="6px" background-color="#f5f5f5" color="#444" border="3px solid #444" text-transform="uppercase" font-weight="600" href="https://rb-webstudio.go.yj.fr/#/contact">Prenez rendez vous avec moi afin de discuter de vos besoins</mj-button>
+                </mj-column>
+            </mj-section>
+            <mj-section>
+                <mj-column>
+                    <mj-navbar align="center">
+                        <mj-navbar-link href="https://www.linkedin.com/in/renaud-bourdeau-%F0%9F%90%A7-7639b944/"><img width="36" src="https://rb-webstudio.go.yj.fr/mail/img/linkedin.png" alt=""></mj-navbar-link>
+                        <mj-navbar-link href="https://github.com/niux3"><img width="36" src="https://rb-webstudio.go.yj.fr/mail/img/github.png" alt=""></mj-navbar-link>
+                    </mj-navbar>
+                    <mj-image align="center" src="https://rb-webstudio.go.yj.fr/mail/img/img.php?civility={{ user.civility }}&firstname={{ user.firstname }}&lastname={{ user.lastname }}&email={{ user.email }}" alt="" width="1" />
+                </mj-column>
+            </mj-section>
     </mj-body>
 </mjml>

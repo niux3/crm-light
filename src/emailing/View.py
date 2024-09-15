@@ -5,5 +5,4 @@ class View:
     def get(path):
         with open(path, 'r') as resource:
             tpl = Template(resource.read())
-        resource.close()
         return tpl

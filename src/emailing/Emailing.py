@@ -24,7 +24,6 @@ class Emailing:
 
         model = Model()
         users = model.get(config['path']['data'])
-        citations = model.get(config['path']['citations'])
 
         server = smtplib.SMTP(config['smtp'], config['port'])
         server.ehlo()
@@ -37,14 +36,24 @@ class Emailing:
             msg['From'] = config['expediteur']
             msg['To'] = row['email']
 
-            data = {'user' : row, 'citation' : random.choice(citations)}
+            querystring = [
+                f'civility={row["civility"]}',
+                f'firstname={row["firstname"]}',
+                f'lastname={row["lastname"]}',
+            ]
+            data = {
+                'user' : row, 
+                'contact' : f'{row["civility"]} {row["lastname"]}',
+                'params' : '&'.join(querystring)
+            }
             for index, value in enumerate(config['path']['view']):
                 tpl = View.get(value)
-                msg.attach(MIMEText(tpl.render(data), 'plain' if index == 0 else 'html'))
+                tpl_rendered = tpl.render(data)
+                msg.attach(MIMEText(tpl_rendered, 'plain' if index == 0 else 'html'))
 
             server.sendmail(config['expediteur'], row['email'], msg.as_string().encode('utf-8'))
             
             ouputLog = "{c} {f} {l} ({e}) envoyé !"
-            logger.info(ouputLog.format(c = row['civilities'], f = row['firstname'], l = row['lastname'], e = row['email']))
+            logger.info(ouputLog.format(c = row['civility'], f = row['firstname'], l = row['lastname'], e = row['email']))
 
         server.quit()

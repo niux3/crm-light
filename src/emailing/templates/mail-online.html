@@ -460,7 +460,7 @@
                           <tbody>
                             <tr>
                               <td style="width:1px;">
-                                <img alt="" src="https://rb-webstudio.go.yj.fr/mail/img/img.php?civility={{ user.civility }}&firstname={{ user.firstname }}&lastname={{ user.lastname }}&email={{ user.email }}" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="1" height="auto" />
+                                  &nbsp;
                               </td>
                             </tr>
                           </tbody>
@@ -478,6 +478,20 @@
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
   </div>
+  <script>
+let queryString = window.location.search,
+    params = new URLSearchParams(queryString),
+    h1 = document.querySelector('h1'),
+    imgOnline = document.querySelector('img[alt=witness]'),
+    civility = params.get('civility'),
+    firstname = params.get('firstname'),
+    lastname = params.get('lastname'),
+    data = [civility, firstname, lastname],
+    defaultReplace = h1.innerHTML.replace('{{ contact }}', ''),
+    replace = h1.innerHTML.replace('{{ contact }}', `${ civility } ${ lastname }`)
+
+h1.innerHTML = data.some(e => e === '' || e === null)? defaultReplace : replace
+  </script>
 </body>
 
 </html>

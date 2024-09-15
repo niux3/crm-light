@@ -3,3 +3,4 @@ __pycache__
 node_modules
 src/log/*
 src/emailing/Configuration.py
+brouillon.md
