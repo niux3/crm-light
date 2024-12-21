@@ -8,7 +8,7 @@
         $_GET['lastname'],
         $_GET['email']
     ]);
-    @file_put_contents('./log/info.log', $output);
+    @file_put_contents('./log/info.log', $output, FILE_APPEND | LOCK_EX);
     @header ("Content-type: image/png");
     $im = @ImageCreate (1, 1); // or die ("Erreur lors de la création de l'image");
     $couleur_fond = @ImageColorAllocate ($im, 245, 245, 245);
