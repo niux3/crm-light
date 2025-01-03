@@ -1,0 +1,23 @@
+<div class="top-bar margin-vertical-1">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">CRM light</li>
+            <li>
+                <a href="#">annuaire</a>
+                <ul class="menu vertical">
+                    <li><a href="{{ url_for('companies.index') }}">sociétés</a></li>
+                    <li><a href="{{ url_for('employee.index') }}">salariés</a></li>
+                    <li><a href="{{ url_for('function.index') }}">fonctions</a></li>
+                    <li><a href="{{ url_for('civility.index') }}">civilités</a></li>
+                    <li><a href="{{ url_for('sector_activity.index') }}">secteur d'activité</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <!--<ul class="menu">-->
+            <!--<li><input type="search" placeholder="Search"></li>-->
+            <!--<li><button type="button" class="button">Search</button></li>-->
+        <!--</ul>-->
+    </div>
+</div>

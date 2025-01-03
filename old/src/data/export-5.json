@@ -1,0 +1,200 @@
+[
+    {
+        "civility": "Monsieur",
+        "firstname": "Luca",
+        "lastname": "Bonino",
+        "email": "l.bonino@hoxtonpartners.com",
+        "profil": "https://www.linkedin.com/in/luca-bonino007",
+        "titre": "consultant informatique (H/F/Y) Senior D\u00e9veloppeur Web en applications de donn\u00e9es (IT) / Freelance",
+        "fonction": "IT Recruiter",
+        "entreprise": "https://www.hoxtonpartners.com",
+        "location": "Paris (75)"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Marvin",
+        "lastname": "Pognart",
+        "email": "m.pognart@abioxir.fr",
+        "profil": "https://www.linkedin.com/in/marvin-pognart-ba634093",
+        "titre": "D\u00e9veloppeur informatique H/F",
+        "fonction": "Responsable technique",
+        "entreprise": "ABIOXIR",
+        "location": "06800 Cagnes-sur-Mer"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Madjda",
+        "lastname": "Dadi",
+        "email": "madjda.dadi@zsoft-consulting.com",
+        "profil": "https://www.linkedin.com/in/mejda-dadi",
+        "titre": "D\u00e9veloppeur Senior Python/GO (IT) / Freelance",
+        "fonction": "Responsable recrutement",
+        "entreprise": "http://www.zsoft-consulting.com",
+        "location": "92300 Levallois-Perret"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "C\u00e9cilia",
+        "lastname": "Icard",
+        "email": "icard.cecilia@oostaoo.com",
+        "profil": "https://www.linkedin.com/in/c\u00e9cilia-icard-dev",
+        "titre": "Architecte & Lead D\u00e9veloppeur Fullstack (Node/React)",
+        "fonction": "Responsable RH",
+        "entreprise": "OOSTAOO CONSULTING",
+        "location": "\u00cele-de-France, France"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Chloe",
+        "lastname": "Gilbert",
+        "email": "cgilbert@groupedigit.com",
+        "profil": "https://www.linkedin.com/in/chlo\u00e9-gilbert-b8253a164",
+        "titre": "D\u00e9veloppeur Java H/F",
+        "fonction": "Responsable des ressources humaines",
+        "entreprise": "DIGIT",
+        "location": "76140 Le Petit-Quevilly"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Martyna",
+        "lastname": "Traciak",
+        "email": "m.traciak@ltd-international.com",
+        "profil": "https://www.linkedin.com/in/martyna-traciak-108b9821b",
+        "titre": "D\u00e9veloppeur Blockchain H/F TRES CONFIRME",
+        "fonction": "Charg\u00e9e de Recrutement",
+        "entreprise": "http://www.ltd-international.com",
+        "location": "Paris, \u00cele-de-France, France"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Elodie",
+        "lastname": "Lemoine",
+        "email": "elodie.lemoine@exteam.fr",
+        "profil": "https://www.linkedin.com/in/el-lemoine",
+        "titre": "Developpeur C++ H/F (IT) / Freelance",
+        "fonction": "Responsable des ressources humaines",
+        "entreprise": "EXteam",
+        "location": "Paris (75)"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Baptiste",
+        "lastname": "Alexandre",
+        "email": "baptiste.alexandre@alxdr.com",
+        "profil": "https://www.linkedin.com/in/baptistealexandre",
+        "titre": "D\u00e9veloppeur Android client France T\u00e9l\u00e9visions \u00e9quipe Player - temps plein freelance ou portage salarial Paris 15e H/F",
+        "fonction": "ALXDR Software Engineering",
+        "entreprise": "ALXDR",
+        "location": "Paris, \u00cele-de-France, France"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Laurent",
+        "lastname": "Olivier",
+        "email": "laurent.olivier@abylsen.com",
+        "profil": "https://www.linkedin.com/in/laurent-olivier-530a11145",
+        "titre": "D\u00e9veloppeur C# .NET",
+        "fonction": "Responsable Ressources Humaines",
+        "entreprise": "ABYLSEN STRA",
+        "location": "Lille, Hauts-de-France, France"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Sarath",
+        "lastname": "Moutairou",
+        "email": "sarath.moutairou@ocsigroup.fr",
+        "profil": "https://www.linkedin.com/in/sarath-moutairou-aaa5381a3",
+        "titre": "D\u00e9veloppeur Ibm I H/F",
+        "fonction": "Charg\u00e9e de Recrutement",
+        "entreprise": "https://ocsigroup.fr",
+        "location": "Nantes, Pays de la Loire, France"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Kevin",
+        "lastname": "Ing",
+        "email": "king@hn-services.com",
+        "profil": "https://www.linkedin.com/in/kevin-ing-38570b107",
+        "titre": "Data analyste informatique (H/F) (IT) / Freelance",
+        "fonction": "Charg\u00e9 de Recrutement IT - Jeunes Dipl\u00f4m\u00e9s",
+        "entreprise": "",
+        "location": "59000 Lille"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Nicolas",
+        "lastname": "Pestana",
+        "email": "nicolas@urbanradar.io",
+        "profil": "https://www.linkedin.com/in/npestana",
+        "titre": "D\u00e9veloppeur.se WordPress/Drupal/PHP",
+        "fonction": "Chief Technology Officer",
+        "entreprise": "Urban Radar",
+        "location": "14 Rue Alexandre Parodi, 75010 Paris, France,Paris,FR"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Jean-sebastien",
+        "lastname": "Guillore",
+        "email": "jsguillore@akerwise.fr",
+        "profil": "https://www.linkedin.com/in/jean-s\u00e9bastien-guillor\u00e9-55b4a220",
+        "titre": "D\u00e9veloppeur Back+API (IT) / Freelance",
+        "fonction": "Dirigeant",
+        "entreprise": "AKERWISE",
+        "location": "44000 Nantes"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Amelie",
+        "lastname": "Richardson",
+        "email": "amelie.richardson@mirakl.com",
+        "profil": "https://www.linkedin.com/in/am\u00e9lie-richardson-b3212114",
+        "titre": "Data Scientist",
+        "fonction": "Chief People Officer",
+        "entreprise": "Mirakl",
+        "location": "France"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Stephane",
+        "lastname": "Marguin",
+        "email": "stephane.marguin@aleysia.com",
+        "profil": "https://www.linkedin.com/in/st\u00e9phane-marguin-29938650",
+        "titre": "D\u00e9veloppeur React / D\u00e9veloppeuse React",
+        "fonction": "Fondateur et directeur",
+        "entreprise": "Aleysia",
+        "location": "Lyon, Auvergne-Rh\u00f4ne-Alpes, France"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Quentin",
+        "lastname": "Nicolas",
+        "email": "quentin.nicolas@selfing.fr",
+        "profil": "https://www.linkedin.com/in/quentin-nicolas-a26164185",
+        "titre": "DevOps Confirm\u00e9(e) (IT) / Freelance",
+        "fonction": "Responsable Recrutement",
+        "entreprise": "http://www.selfing.fr",
+        "location": "59790 Ronchin"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Celine",
+        "lastname": "Leroux",
+        "email": "celine.leroux@coexya.eu",
+        "profil": "https://www.linkedin.com/in/celine-leroux-25348ba7",
+        "titre": "D\u00e9veloppeur BI - Expert Talend Cloud et Power BI (IT) / Freelance",
+        "fonction": "Responsable RH Groupe",
+        "entreprise": "Coexya",
+        "location": "69000 Lyon"
+    },
+    {
+        "civility": "Monsieur",
+        "firstname": "Fabien",
+        "lastname": "Amico",
+        "email": "fabien@fgtech.fr",
+        "profil": "https://www.linkedin.com/in/fabien-amico-8bb85227",
+        "titre": "Consultant.e Kubernetes : Freelance",
+        "fonction": "Co-fondateur CEO",
+        "entreprise": "SAS Les Filles & Les Gar\u00e7ons de la Tech",
+        "location": "Toulouse, Occitanie, France,Toulouse,FR"
+    }
+]

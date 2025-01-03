@@ -54,6 +54,8 @@ class Emailing:
             server.sendmail(config['expediteur'], row['email'], msg.as_string().encode('utf-8'))
             
             ouputLog = "{c} {f} {l} ({e}) envoyé !"
-            logger.info(ouputLog.format(c = row['civility'], f = row['firstname'], l = row['lastname'], e = row['email']))
+            export_output_log = ouputLog.format(c = row['civility'], f = row['firstname'], l = row['lastname'], e = row['email'])
+            # print(export_output_log)
+            logger.info(export_output_log)
 
         server.quit()

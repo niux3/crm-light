@@ -1,0 +1,35 @@
+[
+    {
+        "civility": "Monsieur",
+        "firstname": "Laurent",
+        "lastname": "Rogan",
+        "email": "laurent@worksoft.fr",
+        "profil": "https://www.linkedin.com/in/laurentrogan",
+        "titre": "Lead Dev Java/Python Senior chez un \u00e9diteur de Content Management Aix-en-Provence",
+        "fonction": "CEO",
+        "entreprise": "WORKSOFT",
+        "location": "Aix-en-Provence, Provence-Alpes-C\u00f4te d'Azur, France"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Marion",
+        "lastname": "Fouquet",
+        "email": "marion.fouquet@cenareo.com",
+        "profil": "https://www.linkedin.com/in/marion-fouquet-847281148",
+        "titre": "Software Engineer GO - Video Backend (FREELANCE) F/H",
+        "fonction": "Head of People & Corporate Social Responsibility (RSE)",
+        "entreprise": "Cenareo",
+        "location": "Toulouse, Occitanie, France"
+    },
+    {
+        "civility": "Madame",
+        "firstname": "Camille",
+        "lastname": "Boillot",
+        "email": "camille.boillot@insitoo.com",
+        "profil": "https://www.linkedin.com/in/camille-boillot",
+        "titre": "architecte informatique DevOps (H/F) (IT) / Freelance",
+        "fonction": "Talent Recruiter IT",
+        "entreprise": "",
+        "location": "69000 Lyon"
+    }
+]
