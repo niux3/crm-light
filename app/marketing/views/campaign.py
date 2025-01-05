@@ -1,32 +1,31 @@
 from flask import Blueprint
-from app.companies.models import Company
-from app.companies.forms import CompanyForm
 from app.core.views.base_views import BaseView
+from app.marketing.models import Campaign
+from app.marketing.forms import CampaignForm
 
 
-prefix_bp = 'companies'
-bp = Blueprint(prefix_bp, __name__, url_prefix='/societe')
+prefix_bp = 'campaigns'
+bp = Blueprint(prefix_bp, __name__, url_prefix='/campagnes')
 
 
 @bp.route('/index.html')
 def index():
     fields = {
         'Nom' : 'name',
-        'Enseigne': 'enseigne',
         'Slug': 'slug',
         'Création': 'created',
         'Mise à jour': 'updated'
     }
-    return BaseView.index(Company, prefix_bp, fields, 'une société')
+    return BaseView.index(Campaign, prefix_bp, fields, 'une campagne')
 
 @bp.route('/ajouter.html', methods=['GET', 'POST'])
 def add():
-    return BaseView.add(CompanyForm, Company, prefix_bp)
+    return BaseView.add(CampaignForm, Campaign, prefix_bp)
 
 @bp.route('/<int:id>-supprimer.html')
 def destroy(id):
-    return BaseView.destroy(id, Company, prefix_bp)
+    return BaseView.destroy(id, Campaign, prefix_bp)
 
 @bp.route('/<int:id>-<string:slug>-editer.html', methods=['GET', 'POST'])
 def edit(id, slug):
-    return BaseView.edit(id, slug, Company, CompanyForm, prefix_bp)
+    return BaseView.edit(id, slug, Campaign, CampaignForm, prefix_bp)

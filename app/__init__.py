@@ -36,7 +36,9 @@ def create_app():
     # app.register_blueprint(errors_views.bp)
 
     from app.pages import views as pages_views
-    from app.marketing import views as marketing_views
+    from app.marketing.views import (
+        campaign_bp
+    )
     from app.companies.views import (
         company_bp,
         function_bp,
@@ -50,7 +52,7 @@ def create_app():
     app.register_blueprint(sector_of_activity_bp)
     app.register_blueprint(employee_bp)
     app.register_blueprint(pages_views.bp)
-    app.register_blueprint(marketing_views.bp)
+    app.register_blueprint(campaign_bp)
 
     # from app.auth import views as auth_views
     # app.register_blueprint(auth_views.bp, url_prefix='/auth')

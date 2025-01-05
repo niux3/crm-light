@@ -1,5 +1,6 @@
-from app import db
 from datetime import datetime
+from app import db
+from slugify import slugify
 
 
 class Campaign(db.Model):
@@ -11,7 +12,7 @@ class Campaign(db.Model):
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     def __init__(self, *args, **kwargs):
-        super(Function, self).__init__(*args, **kwargs)
+        super(Campaign, self).__init__(*args, **kwargs)
         self.generate_slug()
 
     def __repr__(self):

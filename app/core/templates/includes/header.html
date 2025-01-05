@@ -12,7 +12,12 @@
                     <li><a href="{{ url_for('sector_activity.index') }}">secteur d'activité</a></li>
                 </ul>
             </li>
-            <li><a href="{{ url_for('marketing.index') }}">Marketing</a></li>
+            <li>
+                <a href="#">marketing</a>
+                <ul class="menu vertical">
+                    <li><a href="{{ url_for('campaigns.index') }}">campagnes</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="top-bar-right">
