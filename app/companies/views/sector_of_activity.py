@@ -1,7 +1,7 @@
 from flask import Blueprint
 from app.companies.models import SectorOfActivity
 from app.companies.forms import SectorOfActivityForm
-from app.companies.views.base_views import BaseView
+from app.core.views.base_views import BaseView
 
 
 prefix_bp = 'sector_activity'

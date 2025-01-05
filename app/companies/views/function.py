@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.companies.views.base_views import BaseView
+from app.core.views.base_views import BaseView
 from app.companies.models import Function
 from app.companies.forms import FunctionForm
 

@@ -2,13 +2,17 @@ from pathlib import Path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from app.config import config
+from app.core.config import config
 
 db = SQLAlchemy()
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(
+        __name__,
+        static_folder='core/static',
+        template_folder='core/templates'
+    )
     app.config.from_object(config)
     config.init_app(app)
     migrate = Migrate()
@@ -26,7 +30,7 @@ def create_app():
     from app.marketing.models import (
         Campaign
     )
-    migrate.init_app(app, db, directory=config.BASEDIR /'app'/'migrations')
+    migrate.init_app(app, db, directory=config.BASEDIR /'app'/ 'core' /'migrations')
 
     # from app.errors import views as errors_views
     # app.register_blueprint(errors_views.bp)

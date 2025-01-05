@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.companies.views.base_views import BaseView
+from app.core.views.base_views import BaseView
 from app.companies.models import Employee, Civility
 from app.companies.forms import EmployeeForm
 
