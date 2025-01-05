@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "be8cfe7d510a840ce49ce3a9b0ecf92801cd9a3f883bc563bd2dc18017e39377"
+            "sha256": "c714293412f14933d712501251621e1c7dce45ebba66438c352d5c1d430d10e1"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -174,6 +174,14 @@
             "markers": "python_version >= '3.8'",
             "version": "==2.2.0"
         },
+        "jedi": {
+            "hashes": [
+                "sha256:4770dc3de41bde3966b02eb84fbcf557fb33cce26ad23da12c742fb50ecb11f0",
+                "sha256:a8ef22bde8490f57fe5c7681a3c83cb58874daf72b4784de3cce5b6ef6edb5b9"
+            ],
+            "index": "pypi",
+            "version": "==0.19.2"
+        },
         "jinja2": {
             "hashes": [
                 "sha256:8fefff8dc3034e27bb80d67c671eb8a9bc424c0ef4c0826edbff304cceff43bb",
@@ -256,6 +264,14 @@
             ],
             "markers": "python_version >= '3.9'",
             "version": "==3.0.2"
+        },
+        "parso": {
+            "hashes": [
+                "sha256:a418670a20291dacd2dddc80c377c5c3791378ee1e8d12bffc35420643d43f18",
+                "sha256:eb3a7b58240fb99099a345571deecc0f9540ea5f4dd2fe14c2a99d6b281ab92d"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==0.8.4"
         },
         "psycopg2-binary": {
             "hashes": [

@@ -23,12 +23,16 @@ def create_app():
         Employee,
         SectorOfActivity
     )
+    from app.marketing.models import (
+        Campaign
+    )
     migrate.init_app(app, db, directory=config.BASEDIR /'app'/'migrations')
 
     # from app.errors import views as errors_views
     # app.register_blueprint(errors_views.bp)
 
     from app.pages import views as pages_views
+    from app.marketing import views as marketing_views
     from app.companies.views import (
         company_bp,
         function_bp,
@@ -42,6 +46,7 @@ def create_app():
     app.register_blueprint(sector_of_activity_bp)
     app.register_blueprint(employee_bp)
     app.register_blueprint(pages_views.bp)
+    app.register_blueprint(marketing_views.bp)
 
     # from app.auth import views as auth_views
     # app.register_blueprint(auth_views.bp, url_prefix='/auth')
