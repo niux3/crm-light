@@ -24,6 +24,7 @@ class Company(db.Model):
     capital = db.Column(db.Integer, nullable=True)
     ca_year = db.Column(db.Integer, nullable=True)
     naf = db.Column(db.String, nullable=True)
+    address = db.Column(db.Text, nullable=True)
     created = db.Column(db.DateTime, default=datetime.now)
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 

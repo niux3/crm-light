@@ -12,7 +12,7 @@ bp = Blueprint(prefix_bp, __name__, url_prefix='/societe')
 def index():
     fields = {
         'Nom' : 'name',
-        'Enseigne': 'enseigne',
+        # 'Enseigne': 'enseigne',
         'Slug': 'slug',
         'Création': 'created',
         'Mise à jour': 'updated'

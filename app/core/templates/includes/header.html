@@ -5,25 +5,26 @@
             <li>
                 <a href="#">annuaire</a>
                 <ul class="menu vertical">
-                    <li><a href="{{ url_for('companies.index') }}">sociétés</a></li>
-                    <li><a href="{{ url_for('employee.index') }}">salariés</a></li>
-                    <li><a href="{{ url_for('function.index') }}">fonctions</a></li>
-                    <li><a href="{{ url_for('civility.index') }}">civilités</a></li>
-                    <li><a href="{{ url_for('sector_activity.index') }}">secteur d'activité</a></li>
+                    <li><a href="{{ url_for('companies.index') }}">Sociétés</a></li>
+                    <li><a href="{{ url_for('employee.index') }}">Salariés</a></li>
+                    <li><a href="{{ url_for('function.index') }}">Fonctions</a></li>
+                    <li><a href="{{ url_for('civility.index') }}">Civilités</a></li>
+                    <li><a href="{{ url_for('sector_activity.index') }}">Secteur d'activité</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#">marketing</a>
                 <ul class="menu vertical">
-                    <li><a href="{{ url_for('campaigns.index') }}">campagnes</a></li>
+                    <li><a href="{{ url_for('campaigns.index') }}">Campagnes</a></li>
                 </ul>
             </li>
         </ul>
     </div>
     <div class="top-bar-right">
-        <!--<ul class="menu">-->
+        <ul class="menu">
+            <li><a href="{{ url_for('import_data.json_data') }}" class="button warning">Importer des données</a></li>
             <!--<li><input type="search" placeholder="Search"></li>-->
             <!--<li><button type="button" class="button">Search</button></li>-->
-        <!--</ul>-->
+        </ul>
     </div>
 </div>

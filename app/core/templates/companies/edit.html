@@ -6,7 +6,7 @@
 {% endblock %}
 {% block title %}{{ super() }} - ajouter{% endblock %}
 {% block content %}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% include 'includes/form.html' %}
         <div><button type="submit" class="button primary">envoyer</button></div>
     </form>

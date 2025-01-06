@@ -16,16 +16,18 @@ class Employee(db.Model):
     date_blacklist = db.Column(db.DateTime, nullable=True)
     description_blacklist = db.Column(db.Text, nullable=True)
     website = db.Column(db.String, nullable=True)
+    linkedin = db.Column(db.String, nullable=True)
     mobile = db.Column(db.String, nullable=True)
     phone = db.Column(db.String, nullable=True)
     description = db.Column(db.Text, nullable=True)
+    address = db.Column(db.Text, nullable=True)
     created = db.Column(db.DateTime, default=datetime.now)
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     
     company_id = db.Column(db.Integer, db.ForeignKey('companies_companies.id', onupdate='CASCADE', ondelete='CASCADE'))
     civility_id = db.Column(db.Integer, db.ForeignKey('companies_civilities.id', onupdate='CASCADE', ondelete='CASCADE'))
     function_id = db.Column(db.Integer, db.ForeignKey('companies_functions.id', onupdate='CASCADE', ondelete='CASCADE'))
-    sector_activity_id = db.Column(db.Integer, db.ForeignKey('companies_sector_of_activities.id', onupdate='CASCADE', ondelete='CASCADE'))
+    sector_activity_id = db.Column(db.Integer, db.ForeignKey('companies_sector_of_activities.id', onupdate='CASCADE', ondelete='CASCADE'), nullable=True)
 
     def __init__(self, *args, **kwargs):
         super(Employee, self).__init__(*args, **kwargs)

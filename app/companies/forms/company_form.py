@@ -11,6 +11,7 @@ class CompanyForm(FlaskForm):
     website = wtforms.URLField()
     description = wtforms.TextAreaField(render_kw={"class": "markdown"})
     # created_date = wtforms.DateField(render_kw={"value": "01/01/1970"})
+    address = wtforms.TextAreaField('adresse')
     phone = wtforms.StringField('Téléphone')
     fax = wtforms.StringField()
     siren = wtforms.StringField()

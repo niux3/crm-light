@@ -30,21 +30,23 @@ def create_app():
     from app.marketing.models import (
         Campaign
     )
-    migrate.init_app(app, db, directory=config.BASEDIR /'app'/ 'core' /'migrations')
+    migrate.init_app(app, db, directory=config.BASEDIR / 'core' /'migrations')
 
     # from app.errors import views as errors_views
     # app.register_blueprint(errors_views.bp)
 
     from app.pages import views as pages_views
     from app.marketing.views import (
-        campaign_bp
+        campaign_bp,
+        diffusion_list_bp
     )
     from app.companies.views import (
         company_bp,
         function_bp,
         civility_bp,
         sector_of_activity_bp,
-        employee_bp
+        employee_bp,
+        import_data_bp
     )
     app.register_blueprint(company_bp)
     app.register_blueprint(function_bp)
@@ -53,6 +55,8 @@ def create_app():
     app.register_blueprint(employee_bp)
     app.register_blueprint(pages_views.bp)
     app.register_blueprint(campaign_bp)
+    app.register_blueprint(import_data_bp)
+    app.register_blueprint(diffusion_list_bp)
 
     # from app.auth import views as auth_views
     # app.register_blueprint(auth_views.bp, url_prefix='/auth')
