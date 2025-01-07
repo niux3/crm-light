@@ -5,6 +5,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from app.core.config import config
+from app.core.libs.autoload import Autoload
 
 db = SQLAlchemy()
 
@@ -22,7 +23,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    locals().update(config.import_models())
+    Autoload.import_models()
     migrate.init_app(app, db, directory=config.BASEDIR / config.MIGRATIONS)
 
     # from app.errors import views as errors_views

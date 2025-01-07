@@ -1,0 +1,45 @@
+import os
+import importlib
+import inspect
+from pathlib import Path
+import humps
+from app.core.config import config
+
+
+class Autoload:
+    @staticmethod
+    def import_models():
+        Autoload._import_models_from_package()
+        Autoload._import_models_from_file()
+
+    @staticmethod
+    def _import_models_from_package():
+        registry = dict()
+        for file in config.BASEDIR.glob('*/**/models'):
+            index_app = str(file).find(str(config.BASEDIR.name))
+            namespace = str(file)[index_app:].replace('/', '.')
+            if Path(str(file / '__init__.py')).is_file():
+                modules_raw = [
+                    f.name.rsplit('.').pop(0) 
+                    for f in file.glob('*.py') 
+                    if not f.name.startswith('__')
+                ]
+                registry = {
+                        humps.pascalize(value): getattr(importlib.import_module(f'{namespace}.{value}'), humps.pascalize(value))
+                        for value in modules_raw
+                }
+                print('>> models (package) : ', ', '.join([humps.pascalize(v) for v in modules_raw]), 'loaded !')
+        return registry
+
+    @staticmethod
+    def _import_models_from_file():
+        registry = dict()
+        for file in config.BASEDIR.glob('*/**/models.py'):
+            index_app = str(file).find(str(config.BASEDIR.name))
+            namespace = str(file)[index_app:].replace('/', '.').replace('.py', '')
+            module = importlib.import_module(namespace)
+            for name, obj in inspect.getmembers(module, inspect.isclass):
+                if hasattr(obj, '__tablename__'):
+                    registry[name] = getattr(module, name)
+            print('>> models (file) : ', ', '.join(registry.keys()), 'loaded !')
+        return registry

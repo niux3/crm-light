@@ -1,7 +1,7 @@
 from flask import Blueprint
 from app.companies.models import Civility
 from app.companies.forms import CivilityForm
-from app.core.views.base_views import BaseView
+from app.core.libs.base_views import BaseView
 
 
 prefix_bp = 'civility'

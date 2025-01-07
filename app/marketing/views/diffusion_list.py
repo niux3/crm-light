@@ -1,7 +1,7 @@
 from flask import Blueprint
 from app.companies.models import Company, Employee
 from app.marketing.forms.diffusion_list_form import DiffusionListForm
-from app.core.views.base_views import BaseView
+from app.core.libs.base_views import BaseView
 from app import db
 
 

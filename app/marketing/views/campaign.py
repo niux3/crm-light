@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.core.views.base_views import BaseView
+from app.core.libs.base_views import BaseView
 from app.marketing.models import Campaign
 from app.marketing.forms import CampaignForm
 

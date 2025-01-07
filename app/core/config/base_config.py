@@ -1,5 +1,6 @@
 import os
 import importlib
+import inspect
 from pathlib import Path
 import humps
 from dotenv import load_dotenv
@@ -25,24 +26,3 @@ class BaseConfig:
     @staticmethod
     def init_app(app):
         print(f"config {os.getenv('FLASK_ENV')} loaded")
-
-    @staticmethod
-    def import_models():
-        registry_models = dict()
-        for file in BaseConfig.BASEDIR.glob('*/**/models'):
-            if Path(str(file / '__init__.py')).is_file():
-                modules_raw = [
-                    f.name.rsplit('.').pop(0) 
-                    for f in file.glob('*.py') 
-                    if not f.name.startswith('__')
-                ]
-                index_app = str(file).find(str(BaseConfig.BASEDIR.name))
-                namespace = str(file)[index_app:].replace('/', '.')
-                registry_models = {
-                        humps.pascalize(value): getattr(importlib.import_module(f'{namespace}.{value}'), humps.pascalize(value))
-                        for value in modules_raw
-                }
-                print('>> models : ', ', '.join([humps.pascalize(v) for v in modules_raw]), 'loaded !')
-            else:
-                print('ko ->', file)
-        return registry_models
