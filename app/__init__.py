@@ -1,4 +1,6 @@
+import importlib
 from pathlib import Path
+import humps
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -10,8 +12,8 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(
         __name__,
-        static_folder='core/static',
-        template_folder='core/templates'
+        static_folder=config.STATIC,
+        template_folder=config.TEMPLATES
     )
     app.config.from_object(config)
     config.init_app(app)
@@ -20,17 +22,8 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app.companies.models import (
-        Company,
-        Function,
-        Civility,
-        Employee,
-        SectorOfActivity
-    )
-    from app.marketing.models import (
-        Campaign
-    )
-    migrate.init_app(app, db, directory=config.BASEDIR / 'core' /'migrations')
+    locals().update(config.import_models())
+    migrate.init_app(app, db, directory=config.BASEDIR / config.MIGRATIONS)
 
     # from app.errors import views as errors_views
     # app.register_blueprint(errors_views.bp)
