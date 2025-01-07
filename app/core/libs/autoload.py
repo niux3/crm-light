@@ -28,7 +28,7 @@ class Autoload:
                         humps.pascalize(value): getattr(importlib.import_module(f'{namespace}.{value}'), humps.pascalize(value))
                         for value in modules_raw
                 }
-                print('>> models (package) : ', ', '.join([humps.pascalize(v) for v in modules_raw]), 'loaded !')
+                print('>> models (package) : ', ', '.join([humps.pascalize(v) for v in modules_raw]), 'loaded!')
         return registry
 
     @staticmethod
@@ -41,5 +41,26 @@ class Autoload:
             for name, obj in inspect.getmembers(module, inspect.isclass):
                 if hasattr(obj, '__tablename__'):
                     registry[name] = getattr(module, name)
-            print('>> models (file) : ', ', '.join(registry.keys()), 'loaded !')
+            print('>> models (file) : ', ', '.join(registry.keys()), 'loaded!')
         return registry
+
+    @staticmethod
+    def import_views(app):
+        views_loaded = []
+        for file in config.BASEDIR.glob('*/**/views'):
+            index_app = str(file).find(str(config.BASEDIR.name))
+            namespace = str(file)[index_app:].replace('/', '.')
+            module = importlib.import_module(namespace)
+            for name, obj in inspect.getmembers(module):
+                if obj.__class__.__name__ == 'Blueprint':
+                    app.register_blueprint(obj)
+                    views_loaded.append(name)
+        for file in config.BASEDIR.glob('*/**/views.py'):
+            index_app = str(file).find(str(config.BASEDIR.name))
+            namespace = str(file)[index_app:].replace('/', '.').replace('.py', '')
+            module = importlib.import_module(namespace)
+            for name, obj in inspect.getmembers(module):
+                if obj.__class__.__name__ == 'Blueprint':
+                    app.register_blueprint(obj)
+                    views_loaded.append(name)
+        print('>> views : ', ', '.join(views_loaded), 'loaded!')
