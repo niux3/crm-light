@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from slugify import slugify
 from app import db
 
@@ -20,6 +20,8 @@ class BaseView:
             instance = obj(**cleared_data)
             db.session.add(instance)
             db.session.commit()
+            db.session.refresh(instance)
+            flash("Votre item a bien été ajouté", "success")
             return redirect(url_for(f'{prefix_bp}.index'))
         ctx = {
             'form': form
@@ -45,6 +47,8 @@ class BaseView:
             instance.slug = slugify(slug_data)
             db.session.add(instance)
             db.session.commit()
+            db.session.refresh(instance)
+            flash("Votre item a bien été modifié", "success")
             return redirect(url_for(f'{prefix_bp}.index'))
         ctx = {
             'form': form
