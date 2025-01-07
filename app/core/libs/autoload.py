@@ -28,7 +28,7 @@ class Autoload:
                         humps.pascalize(value): getattr(importlib.import_module(f'{namespace}.{value}'), humps.pascalize(value))
                         for value in modules_raw
                 }
-                print('>> models (package) : ', ', '.join([humps.pascalize(v) for v in modules_raw]), 'loaded!')
+                print('>> models (package): ', ', '.join([humps.pascalize(v) for v in modules_raw]), 'loaded!')
         return registry
 
     @staticmethod
@@ -41,7 +41,7 @@ class Autoload:
             for name, obj in inspect.getmembers(module, inspect.isclass):
                 if hasattr(obj, '__tablename__'):
                     registry[name] = getattr(module, name)
-            print('>> models (file) : ', ', '.join(registry.keys()), 'loaded!')
+            print('>> models (file): ', ', '.join(registry.keys()), 'loaded!')
         return registry
 
     @staticmethod
@@ -63,4 +63,15 @@ class Autoload:
                 if obj.__class__.__name__ == 'Blueprint':
                     app.register_blueprint(obj)
                     views_loaded.append(name)
-        print('>> views : ', ', '.join(views_loaded), 'loaded!')
+        print('>> views: ', ', '.join(views_loaded), 'loaded!')
+
+    @staticmethod
+    def import_errors(app):
+        views_loaded = []
+        module = importlib.import_module('app.core.errors')
+        for name, obj in inspect.getmembers(module):
+            if name == 'error_handler':
+                for error_status, views in obj.items():
+                    app.register_error_handler(error_status, views)
+                    views_loaded.append(str(error_status))
+        print('>> errors handler:', ', '.join(views_loaded), 'loaded!')

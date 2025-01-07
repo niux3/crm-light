@@ -27,8 +27,10 @@ def create_app():
     migrate.init_app(app, db, directory=config.BASEDIR / config.MIGRATIONS)
 
     Autoload.import_views(app)
-    # from app.errors import views as errors_views
-    # app.register_blueprint(errors_views.bp)
+    Autoload.import_errors(app)
+    # from app.core.errors import page_not_found, internal_server_error
+    # app.register_error_handler(404, page_not_found)
+    # app.register_error_handler(500, internal_server_error)
 
     # from app.auth import views as auth_views
     # app.register_blueprint(auth_views.bp, url_prefix='/auth')
