@@ -18,6 +18,7 @@ class Company(db.Model):
     created_date = db.Column(db.DateTime, nullable=True)
     phone = db.Column(db.String, nullable=True)
     fax = db.Column(db.String, nullable=True)
+    len_employees = db.Column(db.Integer, default=1)
     siren = db.Column(db.String, nullable=True)
     siret = db.Column(db.String, nullable=True)
     description = db.Column(db.Text, nullable=True)
