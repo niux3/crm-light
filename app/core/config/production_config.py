@@ -1,9 +1,6 @@
 import os
-from dotenv import load_dotenv
 from app.core.config.base_config import BaseConfig
 
-
-load_dotenv()
 
 class ProductionConfig(BaseConfig):
     DEBUG = 0

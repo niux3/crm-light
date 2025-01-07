@@ -25,4 +25,4 @@ class BaseConfig:
 
     @staticmethod
     def init_app(app):
-        print(f"config {os.getenv('FLASK_ENV')} loaded")
+        print(f">> config {os.getenv('FLASK_ENV')} loaded!")
