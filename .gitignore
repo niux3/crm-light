@@ -91,3 +91,4 @@ ENV/
 # misc
 node_modules
 Session.vim
+tags
