@@ -1,6 +1,7 @@
 from app import db
 from app.companies.models import Company
 from app.companies.models.function import Function
+from app.companies.models.sector_of_activity import SectorOfActivity
 from datetime import datetime
 from slugify import slugify
 
@@ -23,7 +24,7 @@ class Employee(db.Model):
     address = db.Column(db.Text, nullable=True)
     created = db.Column(db.DateTime, default=datetime.now)
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
-    
+
     company_id = db.Column(db.Integer, db.ForeignKey('companies_companies.id', onupdate='CASCADE', ondelete='CASCADE'))
     civility_id = db.Column(db.Integer, db.ForeignKey('companies_civilities.id', onupdate='CASCADE', ondelete='CASCADE'))
     function_id = db.Column(db.Integer, db.ForeignKey('companies_functions.id', onupdate='CASCADE', ondelete='CASCADE'))
@@ -31,7 +32,7 @@ class Employee(db.Model):
 
     def __init__(self, *args, **kwargs):
         super(Employee, self).__init__(*args, **kwargs)
-        self.generate_slug()
+        self._generate_slug()
 
     def __repr__(self):
         return '<%s id="%r" slug=%r>' % (__class__.__name__, self.id, self.slug)
@@ -48,7 +49,11 @@ class Employee(db.Model):
     def function(self):
         return Function.query.get(self.function_id).name
 
-    def generate_slug(self):
+    @property
+    def sector_activity(self):
+        return SectorOfActivity.query.get(self.sector_activity_id).name
+
+    def _generate_slug(self):
         self.slug = ''
         if self.firstname and self.lastname:
             output = f'{self.firstname} {self.lastname}' if self.firstname != '' else self.lastname

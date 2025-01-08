@@ -1,4 +1,6 @@
-from flask import Blueprint
+import inspect
+from pprint import pprint
+from flask import Blueprint, render_template
 from app.companies.models import Company, Employee
 from app.marketing.forms.diffusion_list_form import DiffusionListForm
 from app.core.libs.base_views import BaseView
@@ -22,7 +24,11 @@ def index():
 
 @bp.route('/ajouter.html', methods=['GET', 'POST'])
 def add():
-    return 'ajouter'
+    form = DiffusionListForm()
+    ctx = {
+        'form': form
+    }
+    return render_template('companies/edit.html', **ctx)
 
 @bp.route('/<int:id>-supprimer.html')
 def destroy(id):

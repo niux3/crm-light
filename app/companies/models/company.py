@@ -33,12 +33,12 @@ class Company(db.Model):
 
     def __init__(self, *args, **kwargs):
         super(Company, self).__init__(*args, **kwargs)
-        self.generate_slug()
+        self._generate_slug()
 
     def __repr__(self):
         return '<%s id="%r" slug=%r>' % (__class__.__name__, self.id, self.slug)
 
-    def generate_slug(self):
+    def _generate_slug(self):
         self.slug = ''
         if self.name:
             self.slug = slugify(self.name)
