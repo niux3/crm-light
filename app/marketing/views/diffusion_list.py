@@ -28,7 +28,7 @@ def add():
     ctx = {
         'form': form
     }
-    return render_template('companies/edit.html', **ctx)
+    return render_template('marketing/edit.html', **ctx)
 
 @bp.route('/<int:id>-supprimer.html')
 def destroy(id):
