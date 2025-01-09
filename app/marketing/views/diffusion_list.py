@@ -1,4 +1,6 @@
 import inspect
+import re
+from collections import defaultdict
 from pprint import pprint
 from flask import Blueprint, render_template, request
 from app.companies.models import Company, Employee
@@ -26,11 +28,27 @@ def index():
 def add():
     form = DiffusionListForm()
     if request.method == 'POST':
-        pprint(dir(request), indent=4)
-        print('*' *  80)
-        pprint(request.data, indent=4)
-        print('*' *  80)
-        pprint(request.form, indent=4)
+        pattern = re.compile(r'^_(?P<number>\d+)_(?P<field>.+)')
+        data = dict(request.form)
+        accepted = 'and' if data.get('accepted') == '0' else 'or'
+        grouped_data = defaultdict(dict)
+        for key, value in data.items():
+            print('k =>', key)
+            match = pattern.match(key)
+            print(match)
+            if match:
+                print(match.groups())
+                match_dict = match.groupdict()  # Récupère les groupes nommés
+                number = match_dict['number']
+                field = match_dict['field']
+                grouped_data[number][field] = value
+                print(grouped_data)
+        # Convertit les données regroupées en liste de dictionnaires
+        result = [grouped_data[number] for number in sorted(grouped_data.keys(), key=int)]
+        print(result)
+        print(accepted)
+        print('*' * 80)
+        pprint(data, indent=4)
     ctx = {
         'form': form
     }
