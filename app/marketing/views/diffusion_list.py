@@ -1,6 +1,6 @@
 import inspect
 from pprint import pprint
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from app.companies.models import Company, Employee
 from app.marketing.forms.diffusion_list_form import DiffusionListForm
 from app.core.libs.base_views import BaseView
@@ -25,6 +25,12 @@ def index():
 @bp.route('/ajouter.html', methods=['GET', 'POST'])
 def add():
     form = DiffusionListForm()
+    if request.method == 'POST':
+        pprint(dir(request), indent=4)
+        print('*' *  80)
+        pprint(request.data, indent=4)
+        print('*' *  80)
+        pprint(request.form, indent=4)
     ctx = {
         'form': form
     }

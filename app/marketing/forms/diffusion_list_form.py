@@ -16,7 +16,7 @@ class DiffusionListForm(FlaskForm):
     accepted = wtforms.RadioField("La fiche est acceptée si", choices=get_accepted, validators=[
         wtforms.validators.DataRequired()
     ])
-    data = wtforms.SelectField('Données', choices=get_data, validators=[
+    data_select = wtforms.SelectField('Données', choices=get_data, validators=[
         wtforms.validators.DataRequired()
     ])
     compare = wtforms.SelectField('Compare', choices=get_compare, validators=[
