@@ -47,3 +47,26 @@ def get_compare():
 def get_accepted():
     data = ["Toutes les conditions sont remplies", "Au moins une condition est remplie"]
     return [(i, r) for i, r in enumerate(data)]
+
+def get_date():
+        return [("", "choisir un item")] + [(i, r) for i, r in enumerate(['créée', "mise à jour"])]
+
+def get_custom_date():
+    output = [
+        "Personnalisé",
+        "Année précédente",
+        "Année courante",
+        "Année suivante",
+        "Trimestre précédent",
+        "Trimestre courant",
+        "Trimestre suivant",
+        "Mois précédent",
+        "Mois courant",
+        "Mois suivant",
+        "Hier",
+        "Aujourd'hui",
+        "Demain",
+        "Dans le futur",
+        "Dans le passé",
+    ]
+    return [("", "choisir un item")] + [(i, r) for i, r in enumerate(output)]

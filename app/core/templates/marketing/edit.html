@@ -15,6 +15,10 @@
 {% block content %}
     <form method="post">
         {{ form.csrf_token }}
+        <label>
+            <span>{{ form.name.label.text }}</span>
+            {{ form.name }}
+        </label>
         <fieldset  class="fieldset">
             <legend>{{ form.accepted.label.text }}</legend>
             <div class="grid-x grid-padding-x">
@@ -40,6 +44,27 @@
                 <label class="cell medium-3">
                     <span>{{ form.value.label.text }}</span>
                     {{ form.value }}
+                </label>
+            </div>
+        </fieldset>
+        <fieldset  class="fieldset addFieldsDate">
+            <legend>Sur les champs date</legend>
+            <div class="group grid-x grid-padding-x">
+                <label class="cell medium-2">
+                    <span>{{ form.date.label.text }}</span>
+                    {{ form.date }}
+                </label>
+                <label class="cell medium-3">
+                    <span>{{ form.custom.label.text }}</span>
+                    {{ form.custom }}
+                </label>
+                <label class="cell medium-2">
+                    <span>{{ form.begin.label.text }}</span>
+                    {{ form.begin }}
+                </label>
+                <label class="cell medium-2">
+                    <span>{{ form.end.label.text }}</span>
+                    {{ form.end }}
                 </label>
             </div>
         </fieldset>
