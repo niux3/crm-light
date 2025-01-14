@@ -1,5 +1,4 @@
 import json
-from pprint import pprint
 from flask import Blueprint, request, render_template, flash, redirect, url_for
 from werkzeug.utils import secure_filename
 from app.companies.forms import ImportDataForm
@@ -28,7 +27,6 @@ def json_data():
         def get_data(model, condition, data_to_db):
             obj = model.query.filter(condition).first()
             if obj is None:
-                print("n'existe pas")
                 obj = model(**data_to_db)
                 db.session.add(obj)
                 db.session.commit()
