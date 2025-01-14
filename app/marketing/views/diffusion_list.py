@@ -31,7 +31,6 @@ def add():
     form = DiffusionListForm()
     if request.method == 'POST':
         data = dict(request.form)
-        del data['csrf_token']
         date_fields = {"date", "custom", "begin", "end"}
         pattern = re.compile(r'(?P<field>.+)_(?P<number>\d+)$')
         grouped_data = {
@@ -52,7 +51,7 @@ def add():
         output_json = {
             "dates": [grouped_data["dates"][num] for num in sorted(grouped_data["dates"].keys(), key=int)],
             "others": [grouped_data["others"][num] for num in sorted(grouped_data["others"].keys(), key=int)],
-            "accepted": data.get('accepted') 
+            "accepted": data.get('accepted')
         }
         diffusions_list = DiffusionList(**{
             "name": data.get('name'),
