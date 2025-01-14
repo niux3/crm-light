@@ -28,21 +28,32 @@ def index():
 def add():
     form = DiffusionListForm()
     if request.method == 'POST':
-        pattern = re.compile(r'(?P<field>.+)_(?P<number>\d+)$')
         data = dict(request.form)
-        accepted = 'and' if data.get('accepted') == '0' else 'or'
-        grouped_data = defaultdict(dict)
+        date_fields = {"date", "custom", "begin", "end"}
+        pattern = re.compile(r'(?P<field>.+)_(?P<number>\d+)$')
+        grouped_data = {
+            "dates": defaultdict(dict),
+            "others": defaultdict(dict),
+        }
+        output = {}
         for key, value in data.items():
             match = pattern.match(key)
             if match:
-                match_dict = match.groupdict()  # Récupère les groupes nommés
-                number = match_dict['number']
-                field = match_dict['field']
-                grouped_data[number][field] = value
-        # Convertit les données regroupées en liste de dictionnaires
-        result = [grouped_data[number] for number in sorted(grouped_data.keys(), key=int)]
-        print(result)
-        print(accepted)
+                field = match.group("field")
+                number = match.group("number")
+
+                # Vérifier si le champ appartient aux dates ou aux autres
+                if field in date_fields:
+                    grouped_data["dates"][number][field] = value
+                else:
+                    grouped_data["others"][number][field] = value
+        output = {
+            "dates": [grouped_data["dates"][num] for num in sorted(grouped_data["dates"].keys(), key=int)],
+            "others": [grouped_data["others"][num] for num in sorted(grouped_data["others"].keys(), key=int)],
+            "accepted": data.get('accepted') 
+        }
+        print('*' * 80)
+        pprint(output, indent=4)
         print('*' * 80)
         pprint(data, indent=4)
     ctx = {
