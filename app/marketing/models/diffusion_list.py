@@ -15,7 +15,7 @@ class DiffusionList(db.Model):
     campaign_id = db.Column(db.Integer, db.ForeignKey('marketing_compaigns.id', onupdate='CASCADE', ondelete='CASCADE'))
 
     def __init__(self, *args, **kwargs):
-        super(Campaign, self).__init__(*args, **kwargs)
+        super(DiffusionList, self).__init__(*args, **kwargs)
         self.generate_slug()
 
     def __repr__(self):

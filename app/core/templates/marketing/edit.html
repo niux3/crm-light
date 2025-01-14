@@ -15,10 +15,22 @@
 {% block content %}
     <form method="post">
         {{ form.csrf_token }}
-        <label>
-            <span>{{ form.name.label.text }}</span>
-            {{ form.name }}
-        </label>
+        <fieldset class="fieldset">
+
+            <label class="margin-horizontal-1">
+                <span>{{ form.name.label.text }}</span>
+                {{ form.name }}
+            </label>
+            <div class="grid-x grid-padding-x">
+                <label class="cell medium-9">
+                    <span>{{ form.campaign_id.label.text }}</span>
+                    {{ form.campaign_id }}
+                </label>
+                <div class="cell medium-3 flex-container align-bottom">
+                    <a href="{{ url_for('campaigns.add') }}" class="button primary expanded">ajouter une campagne</a>
+                </div>
+            </div>
+        </fieldset>
         <fieldset  class="fieldset">
             <legend>{{ form.accepted.label.text }}</legend>
             <div class="grid-x grid-padding-x">

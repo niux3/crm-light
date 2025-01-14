@@ -1,5 +1,6 @@
 import wtforms
 from flask_wtf import FlaskForm
+from app.marketing.models import Campaign
 from app.marketing.libs import (
     get_compare,
     get_data,
@@ -10,6 +11,9 @@ from app.marketing.libs import (
 
 
 class DiffusionListForm(FlaskForm):
+    campaign_id = wtforms.SelectField('Campagne', validators=[
+        wtforms.validators.DataRequired()
+        ], choices=lambda: [("", "choisir une campagne")] + [(row.id, row.name) for row in Campaign.query.all()])
     name = wtforms.StringField('Nom', validators=[
         wtforms.validators.DataRequired()
     ])
