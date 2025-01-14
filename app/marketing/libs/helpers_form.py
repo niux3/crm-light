@@ -42,14 +42,14 @@ def get_compare():
         "Est vide",
     ]
     output = [("", "choisir un item")]
-    return output + [(i, r) for i, r in enumerate(rows)]
+    return output + [(i, r) for i, r in enumerate(rows, 1)]
 
 def get_accepted():
     data = ["Toutes les conditions sont remplies", "Au moins une condition est remplie"]
-    return [(i, r) for i, r in enumerate(data)]
+    return [(i, r) for i, r in enumerate(data, 1)]
 
 def get_date():
-        return [("", "choisir un item")] + [(i, r) for i, r in enumerate(['créée', "mise à jour"])]
+        return [("", "choisir un item")] + [(i, r) for i, r in enumerate(['créée', "mise à jour"], 1)]
 
 def get_custom_date():
     output = [
@@ -69,4 +69,4 @@ def get_custom_date():
         "Dans le futur",
         "Dans le passé",
     ]
-    return [("", "choisir un item")] + [(i, r) for i, r in enumerate(output)]
+    return [("", "choisir un item")] + [(i, r) for i, r in enumerate(output, 1)]
