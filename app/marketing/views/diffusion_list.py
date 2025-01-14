@@ -28,21 +28,17 @@ def index():
 def add():
     form = DiffusionListForm()
     if request.method == 'POST':
-        pattern = re.compile(r'^_(?P<number>\d+)_(?P<field>.+)')
+        pattern = re.compile(r'(?P<field>.+)_(?P<number>\d+)$')
         data = dict(request.form)
         accepted = 'and' if data.get('accepted') == '0' else 'or'
         grouped_data = defaultdict(dict)
         for key, value in data.items():
-            print('k =>', key)
             match = pattern.match(key)
-            print(match)
             if match:
-                print(match.groups())
                 match_dict = match.groupdict()  # Récupère les groupes nommés
                 number = match_dict['number']
                 field = match_dict['field']
                 grouped_data[number][field] = value
-                print(grouped_data)
         # Convertit les données regroupées en liste de dictionnaires
         result = [grouped_data[number] for number in sorted(grouped_data.keys(), key=int)]
         print(result)

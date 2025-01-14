@@ -16,16 +16,16 @@ class DiffusionListForm(FlaskForm):
     accepted = wtforms.RadioField("La fiche est acceptée si", choices=get_accepted, validators=[
         wtforms.validators.DataRequired()
     ])
-    data_select = wtforms.SelectField('Données', choices=get_data, validators=[
+    data_select_0 = wtforms.SelectField('Données', choices=get_data, validators=[
         wtforms.validators.DataRequired()
     ])
-    compare = wtforms.SelectField('Compare', choices=get_compare, validators=[
+    compare_0 = wtforms.SelectField('Compare', choices=get_compare, validators=[
         wtforms.validators.DataRequired()
     ])
-    value = wtforms.StringField("Valeur", validators=[
+    value_0 = wtforms.StringField("Valeur", validators=[
         wtforms.validators.DataRequired()
     ])
-    date = wtforms.SelectField("Type de date", choices=get_date)
-    custom = wtforms.SelectField("Personnalisation", choices=get_custom_date)
-    begin = wtforms.StringField('De')
-    end = wtforms.StringField('À')
+    date_0 = wtforms.SelectField("Type de date", choices=get_date)
+    custom_0 = wtforms.SelectField("Personnalisation", choices=get_custom_date)
+    begin_0 = wtforms.StringField('De')
+    end_0 = wtforms.StringField('À')

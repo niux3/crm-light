@@ -2,19 +2,12 @@
     let fieldsets = document.querySelectorAll('.addRows'),
         addNewFields = (fieldset, groups) => fieldset.insertAdjacentHTML("beforeend", groups[groups.length - 1].outerHTML),
         changeName = fieldset =>{
-            fieldset.querySelectorAll('.group').forEach((g, i)=>{
-                let names = ["data_select", "compare", "value", "date", "custom", "begin", "end"],
-                    inputs = names.map(n => g.querySelector(`*[name$="${n}"]`))
-                inputs.forEach(input => { 
+            fieldset.querySelectorAll('.group').forEach((g, indexGroup)=>{
+                let names = ["data_select", "compare", "value", "date", "custom", "begin", "end"]
+                names.map(n => g.querySelector(`*[name^="${n}"]`)).forEach((input, indexField) => { 
                     if(input !== null){
-                        let motif = `_${i}_`
-                        if(input.name[0] === '_'){
-                            input.name = `${motif}${input.name.substring(motif.length)}`
-                            input.id = `${motif}${input.id.substring(motif.length)}`
-                        }else{
-                            input.name = `${motif}${input.name}`
-                            input.id = `${motif}${input.id}`
-                        }
+                        input.name = `${names[indexField]}_${indexGroup}`
+                        input.id = `${names[indexField]}_${indexGroup}`
                     }
                 })
             })
