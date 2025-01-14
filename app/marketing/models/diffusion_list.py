@@ -1,18 +1,18 @@
 from datetime import datetime
 from app import db
 from slugify import slugify
-from sqlalchemy.orm import relationship, backref
 
 
-class Campaign(db.Model):
-    __tablename__ = 'marketing_compaigns'
+class DiffusionList(db.Model):
+    __tablename__ = 'marketing_diffusions_lists'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     slug = db.Column(db.String)
+    data = db.Column(db.String)
     created = db.Column(db.DateTime, default=datetime.now)
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    diffusions_list = relationship('DiffusionList', backref=backref('campaigns'))
+    campaign_id = db.Column(db.Integer, db.ForeignKey('marketing_compaigns.id', onupdate='CASCADE', ondelete='CASCADE'))
 
     def __init__(self, *args, **kwargs):
         super(Campaign, self).__init__(*args, **kwargs)
@@ -25,3 +25,4 @@ class Campaign(db.Model):
         self.slug = ''
         if self.name:
             self.slug = slugify(self.name)
+
