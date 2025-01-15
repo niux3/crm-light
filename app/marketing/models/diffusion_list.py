@@ -1,6 +1,7 @@
 from datetime import datetime
 from app import db
 from slugify import slugify
+from app.marketing.models import Campaign
 
 
 class DiffusionList(db.Model):
@@ -26,3 +27,6 @@ class DiffusionList(db.Model):
         if self.name:
             self.slug = slugify(self.name)
 
+    @property
+    def campaign(self):
+        return Campaign.query.get(self.campaign_id).name
