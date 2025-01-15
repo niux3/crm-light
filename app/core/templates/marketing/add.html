@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+    <style>
+.group .cell:last-child button{
+    display: none;
+}
+.group:last-child .cell:last-child button{
+    display: block;
+}
+    </style>
+{% endblock %}
+{% block title %}{{ super() }} - ajouter{% endblock %}
+{% block content %}
+    <form method="post">
+        {{ form.csrf_token }}
+        <fieldset class="fieldset">
+
+            <label class="margin-horizontal-1">
+                <span>{{ form.name.label.text }}</span>
+                {{ form.name }}
+            </label>
+            <div class="grid-x grid-padding-x">
+                <label class="cell medium-9">
+                    <span>{{ form.campaign_id.label.text }}</span>
+                    {{ form.campaign_id }}
+                </label>
+                <div class="cell medium-3 flex-container align-bottom">
+                    <a href="{{ url_for('campaigns.add') }}" class="button primary expanded">ajouter une campagne</a>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset  class="fieldset">
+            <legend>{{ form.accepted.label.text }}</legend>
+            <div class="grid-x grid-padding-x">
+                {% for d in form.accepted %}
+                    <label class="cell medium-6">
+                        {{ d }}
+                        <span>{{ d.label.text }}</span>
+                    </label>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <fieldset  class="fieldset addRows">
+            <legend>Sur les champs normaux</legend>
+            <div class="group grid-x grid-padding-x">
+                <label class="cell medium-3">
+                    <span>{{ form.data_select_0.label.text }}</span>
+                    {{ form.data_select_0 }}
+                </label>
+                <label class="cell medium-3">
+                    <span>{{ form.compare_0.label.text }}</span>
+                    {{ form.compare_0 }}
+                </label>
+                <label class="cell medium-3">
+                    <span>{{ form.value_0.label.text }}</span>
+                    {{ form.value_0 }}
+                </label>
+            </div>
+        </fieldset>
+        <fieldset  class="fieldset addRows">
+            <legend>Sur les champs date</legend>
+            <div class="group grid-x grid-padding-x">
+                <label class="cell medium-2">
+                    <span>{{ form.date_0.label.text }}</span>
+                    {{ form.date_0 }}
+                </label>
+                <label class="cell medium-3">
+                    <span>{{ form.custom_0.label.text }}</span>
+                    {{ form.custom_0 }}
+                </label>
+                <label class="cell medium-2">
+                    <span>{{ form.begin_0.label.text }}</span>
+                    {{ form.begin_0 }}
+                </label>
+                <label class="cell medium-2">
+                    <span>{{ form.end_0.label.text }}</span>
+                    {{ form.end_0 }}
+                </label>
+            </div>
+        </fieldset>
+        <div><button type="submit" class="button primary">envoyer</button></div>
+    </form>
+{% endblock %}
+{% block js %}
+   <script src="{{ url_for('static', filename="js/filter_add_fields.js") }}"></script>
+{% endblock %}
