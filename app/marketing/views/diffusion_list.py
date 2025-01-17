@@ -71,13 +71,16 @@ def add():
 def destroy(id):
     return BaseView.destroy(id, DiffusionList, prefix_bp)
 
+# todo
 @bp.route('/<int:id>-<string:slug>-editer.html', methods=['GET', 'POST'])
 def edit(id, slug):
     instance = DiffusionList.query.get_or_404(id)
     form = DiffusionListForm(obj=instance)
+
     if request.method == 'POST':
         print('post')
+        print(json.loads(instance.data))
     ctx = {
         "form": form
     }
-    return render_template('marketing/edit.html')
+    return render_template('marketing/edit.html', **ctx)
