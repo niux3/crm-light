@@ -6,7 +6,7 @@
             {% for k, v in fields.items() %}
                 <th class="text-left" scope="col">{{ k }}</th>
             {% endfor %}
-            <th class="text-center" scope="col">Action</th>
+            <th class="text-center" scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
                     {% endif %}
                 {% endfor %}
             <td class="text-center">
-                <a class="button warning" href="{{ url_for(edit, id=object.id, slug=object.slug) }}">editer</a>
+                <a class="button warning" href="{{ url_for(edit, id=object.id, slug=object.slug) }}">éditer</a>
                 <a class="button alert" onclick="javascript: return confirm('Êtes vous sur de vouloir supprimer cette ligne ?')" href="{{ url_for(destroy, id=object.id) }}">supprimer</a>
             </td>
         </tr>

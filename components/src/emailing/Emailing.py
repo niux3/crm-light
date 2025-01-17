@@ -52,7 +52,7 @@ class Emailing:
                 msg.attach(MIMEText(tpl_rendered, 'plain' if index == 0 else 'html'))
 
             server.sendmail(config['expediteur'], row['email'], msg.as_string().encode('utf-8'))
-            
+
             ouputLog = "{c} {f} {l} ({e}) envoyé !"
             export_output_log = ouputLog.format(c = row['civility'], f = row['firstname'], l = row['lastname'], e = row['email'])
             # print(export_output_log)
