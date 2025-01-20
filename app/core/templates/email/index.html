@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ super() }} - index{% endblock %}
+{% block content %}
+    {{ object_list }}
+
+    {% if object_list| length > 0 %}
+    <table>
+        <thead>
+            <tr>
+                <th class="text-center" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                <td class="text-center">
+                    <a class="button primary" href="{{ url_for('emails.add', id=object.id) }}">importer template email</a>
+                    <a class="button secondary" href="">voir</a>
+                    <a class="button alert" onclick="javascript: return confirm('Êtes vous sur de vouloir supprimer cette ligne ?')" href="">supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
