@@ -56,8 +56,8 @@ def json_data():
                 'function_id': function.id,
                 'company_id': company.id
             })
-            flash("importation avec succès", category="success")
-            return redirect(url_for('companies.index'))
+        flash("importation avec succès", category="success")
+        return redirect(url_for('companies.index'))
     ctx = {
         'form': form
     }
