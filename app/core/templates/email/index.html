@@ -20,7 +20,7 @@
                         <a class="button primary" href="{{ url_for('emails.add', id=object.id) }}">importer template email</a>
                         <a class="button secondary" href="">voir</a>
                         {% for email in object.email %}
-                            {% if loop.index == 1 %}
+                            {% if loop.last %}
                                 <a class="button alert" onclick="javascript: return confirm('Êtes vous sur de vouloir supprimer cette ligne ?')" href="{{ url_for('emails.destroy', id=email.id) }}">supprimer</a>
                             {% endif %}
                         {% endfor %}

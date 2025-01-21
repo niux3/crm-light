@@ -19,6 +19,7 @@ class BaseConfig:
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     BASEDIR = Path(__file__).resolve().parent.parent.parent
+    TEMPLATES_EMAIL = os.getenv('TEMPLATES_EMAIL')
     STATIC = os.getenv('STATIC')
     TEMPLATES = os.getenv('TEMPLATES')
     MIGRATIONS = os.getenv('MIGRATIONS')
