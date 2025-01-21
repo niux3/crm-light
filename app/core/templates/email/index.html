@@ -21,7 +21,7 @@
                         <a class="button secondary" href="">voir</a>
                         {% for email in object.email %}
                             {% if loop.last %}
-                                <a class="button alert" onclick="javascript: return confirm('Êtes vous sur de vouloir supprimer cette ligne ?')" href="{{ url_for('emails.destroy', id=email.id) }}">supprimer</a>
+                                <a class="button alert" onclick="javascript: return confirm('Êtes vous sur de vouloir supprimer cette ligne ?')" href="{{ url_for('emails.destroy', email_id=email.id, campaign_id=object.id) }}">supprimer</a>
                             {% endif %}
                         {% endfor %}
                     </td>

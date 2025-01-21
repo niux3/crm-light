@@ -33,6 +33,7 @@ class BaseView:
         instance = obj.query.get_or_404(id)
         db.session.delete(instance)
         db.session.commit()
+        flash("Votre item a bien été supprimé", "success")
         return redirect(url_for(f'{prefix_bp}.index'))
 
     @staticmethod

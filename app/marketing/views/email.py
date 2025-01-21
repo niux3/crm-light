@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 from slugify import slugify
 from flask import Blueprint, render_template, request, redirect, url_for, flash
@@ -27,7 +28,7 @@ def add(id):
     if request.method == 'POST' and form.validate_on_submit():
         template_html_file = request.files['template_html']
         template_text_file = request.files['template_text']
-        destination = f'{config.TEMPLATES_EMAIL}/{str(id)}'
+        destination = f'{config.TEMPLATES_EMAIL}/campaign_id_{str(id)}'
 
         if not Path(destination).exists():
             Path(destination).mkdir(parents=True)
@@ -53,9 +54,15 @@ def add(id):
     }
     return render_template('email/edit.html', **ctx)
 
-@bp.route('/<int:id>-supprimer')
-def destroy(id):
-    return f"delete {id}"
+@bp.route('/<int:email_id>-<int:campaign_id>-supprimer.html')
+def destroy(email_id, campaign_id):
+    destination = f'{config.TEMPLATES_EMAIL}/campaign_id_{campaign_id}'
+    shutil.rmtree(destination)
+    email_object = Email.query.get_or_404(email_id)
+    db.session.delete(email_object)
+    db.session.commit()
+    flash("Votre item a bien été supprimé", "success")
+    return redirect(url_for('emails.index'))
 
 @bp.route('/voir.html')
 def show():
