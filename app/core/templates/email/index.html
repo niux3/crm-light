@@ -18,7 +18,7 @@
                     <td>{{ object.slug }}</td>
                     <td class="text-right">
                         <a class="button primary" href="{{ url_for('emails.add', id=object.id) }}">importer template email</a>
-                        <a class="button secondary" href="">voir</a>
+                        <a class="button secondary" href="{{ url_for('emails.show', id=object.id) }}">voir</a>
                         {% for email in object.email %}
                             {% if loop.last %}
                                 <a class="button alert" onclick="javascript: return confirm('Êtes vous sur de vouloir supprimer cette ligne ?')" href="{{ url_for('emails.destroy', email_id=email.id, campaign_id=object.id) }}">supprimer</a>

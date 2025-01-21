@@ -21,6 +21,7 @@ def index():
     }
     return render_template('email/index.html', **ctx)
 
+# todo try/except
 @bp.route('/<int:id>-importer.html', methods=['GET', 'POST'])
 def add(id):
     instance = Campaign.query.get_or_404(id)
@@ -54,6 +55,7 @@ def add(id):
     }
     return render_template('email/edit.html', **ctx)
 
+# todo try/except
 @bp.route('/<int:email_id>-<int:campaign_id>-supprimer.html')
 def destroy(email_id, campaign_id):
     destination = f'{config.TEMPLATES_EMAIL}/campaign_id_{campaign_id}'
@@ -64,9 +66,19 @@ def destroy(email_id, campaign_id):
     flash("Votre item a bien été supprimé", "success")
     return redirect(url_for('emails.index'))
 
-@bp.route('/voir.html')
-def show():
-    return "show email"
+@bp.route('/<int:id>-voir.html')
+def show(id):
+    campaign = Campaign.query.get_or_404(id)
+    email = campaign.email.pop(-1)
+    diffusion_list = DiffusionList.query.filter(DiffusionList.campaign_id==id).all()
+    print(diffusion_list.pop(0).data)
+    ctx = {
+        "campaign": campaign
+    }
+    for suffix_attr in ["text", "html"]:
+        with open(f'{config.BASEDIR.parent}/{getattr(email, f"template_{suffix_attr}")}', 'r', encoding='utf-8') as f:
+            ctx[f'template_{suffix_attr}'] = f.read()
+    return f"show campaign {id}"
 
 @bp.route('/envoyer.html')
 def send():
