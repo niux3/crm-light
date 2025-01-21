@@ -12,7 +12,8 @@ class Campaign(db.Model):
     created = db.Column(db.DateTime, default=datetime.now)
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    diffusions_list = relationship('DiffusionList', backref=backref('campaigns'))
+    diffusions_list = relationship('DiffusionList', backref=backref('campaigns_diffusion_lists'))
+    email = relationship('Email', backref=backref('campaigns_email'))
 
     def __init__(self, *args, **kwargs):
         super(Campaign, self).__init__(*args, **kwargs)
