@@ -1,7 +1,7 @@
 from pathlib import Path
 from slugify import slugify
-from flask import Blueprint, render_template, request
-from app.marketing.models import Campaign, DiffusionList
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from app.marketing.models import Campaign, DiffusionList, Email
 from app.marketing.forms import EmailImportForm
 from app.core.config import config
 from app import db
@@ -13,8 +13,10 @@ bp = Blueprint(prefix_bp, __name__, url_prefix='/emails')
 
 @bp.route('/index.html')
 def index():
+    object_list = Campaign.query.all()
+    print(object_list[1].email)
     ctx = {
-        "object_list": Campaign.query.all()
+        "object_list": object_list
     }
     return render_template('email/index.html', **ctx)
 
@@ -32,12 +34,24 @@ def add(id):
         destination_text = str(Path(config.BASEDIR / 'core' / 'static' / 'templates_email' / str(id) / slugify(template_text_file.filename)))
         template_html_file.save(destination_html)
         template_text_file.save(destination_text)
-
-        return 'post'
+        email = Email(**{
+            'template_html': destination_html,
+            'template_text': destination_text,
+            'campaign_id': id
+        })
+        db.session.add(email)
+        db.session.commit()
+        db.session.refresh(email)
+        flash('enregistrement des templates avec succès', 'success')
+        return redirect(url_for('emails.index'))
     ctx = {
         'form': form
     }
     return render_template('email/edit.html', **ctx)
+
+@bp.route('/<int:id>-supprimer')
+def destroy(id):
+    return f"delete {id}"
 
 @bp.route('/voir.html')
 def show():

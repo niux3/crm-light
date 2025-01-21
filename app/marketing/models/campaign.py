@@ -7,8 +7,8 @@ from sqlalchemy.orm import relationship, backref
 class Campaign(db.Model):
     __tablename__ = 'marketing_compaigns'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    slug = db.Column(db.String)
+    name = db.Column(db.String, unique=True)
+    slug = db.Column(db.String, unique=True)
     created = db.Column(db.DateTime, default=datetime.now)
     updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 

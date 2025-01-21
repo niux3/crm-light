@@ -13,4 +13,4 @@ class Email(db.Model):
     campaign_id = db.Column(db.Integer, db.ForeignKey('marketing_compaigns.id', onupdate='CASCADE', ondelete='CASCADE'))
 
     def __repr__(self):
-        return '<%s id="%r" slug=%r>' % (__class__.__name__, self.id, self.slug)
+        return '<%s id="%r">' % (__class__.__name__, self.id)
