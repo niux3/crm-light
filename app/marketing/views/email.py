@@ -28,15 +28,15 @@ def add(id):
         template_html_file = request.files['template_html']
         template_text_file = request.files['template_text']
         destination = f'{config.TEMPLATES_EMAIL}/{str(id)}'
-        print(destination)
-        print("NOT EXISTS >>>",id, not Path(destination).exists())
+
         if not Path(destination).exists():
             Path(destination).mkdir(parents=True)
+        
         destination_html = f'{destination}/{slugify(template_html_file.filename)}'
         destination_text = f'{destination}/{slugify(template_text_file.filename)}'
-        print(destination_text)
         template_html_file.save(destination_html)
         template_text_file.save(destination_text)
+        
         email = Email(**{
             'template_html': destination_html,
             'template_text': destination_text,
@@ -45,6 +45,7 @@ def add(id):
         db.session.add(email)
         db.session.commit()
         db.session.refresh(email)
+        
         flash('enregistrement des templates avec succès', 'success')
         return redirect(url_for('emails.index'))
     ctx = {
