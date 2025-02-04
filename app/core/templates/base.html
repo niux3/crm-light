@@ -5,9 +5,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}CRM Light{% endblock %}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation-float.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation-prototype.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation-rtl.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation-float.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation-prototype.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation-rtl.min.css') }}">
         {% block css %}{% endblock %}
     </head>
 
