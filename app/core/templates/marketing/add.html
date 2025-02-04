@@ -1,35 +1,14 @@
 {% extends 'base.html' %}
 
 
-{% block css %}
-    <style>
-.group .cell:last-child button{
-    display: none;
-}
-.group:last-child .cell:last-child button{
-    display: block;
-}
-    </style>
-{% endblock %}
 {% block title %}{{ super() }} - ajouter{% endblock %}
 {% block content %}
-    <form method="post">
-        {{ form.csrf_token }}
+    <form method="get">
         <fieldset class="fieldset">
-
             <label class="margin-horizontal-1">
                 <span>{{ form.name.label.text }}</span>
                 {{ form.name }}
             </label>
-            <div class="grid-x grid-padding-x">
-                <label class="cell medium-9">
-                    <span>{{ form.campaign_id.label.text }}</span>
-                    {{ form.campaign_id }}
-                </label>
-                <div class="cell medium-3 flex-container align-bottom">
-                    <a href="{{ url_for('campaigns.add') }}" class="button primary expanded">ajouter une campagne</a>
-                </div>
-            </div>
         </fieldset>
         <fieldset  class="fieldset">
             <legend>{{ form.accepted.label.text }}</legend>
@@ -45,44 +24,59 @@
         <fieldset  class="fieldset addRows">
             <legend>Sur les champs normaux</legend>
             <div class="group grid-x grid-padding-x">
-                <label class="cell medium-3">
-                    <span>{{ form.data_select_0.label.text }}</span>
-                    {{ form.data_select_0 }}
+                <label class="cell medium-2">
+                    <span>{{ form.field_0.label.text }}</span>
+                    {{ form.field_0 }}
                 </label>
                 <label class="cell medium-3">
-                    <span>{{ form.compare_0.label.text }}</span>
-                    {{ form.compare_0 }}
+                    <span>{{ form.field_filter_0.label.text }}</span>
+                    {{ form.field_filter_0 }}
                 </label>
-                <label class="cell medium-3">
-                    <span>{{ form.value_0.label.text }}</span>
-                    {{ form.value_0 }}
-                </label>
+                <div class="cell dynamicField medium-4 flex-container align-justify">
+                    <label class="width-100">
+                        <span>{{ form.field_value_0.label.text }}</span>
+                        {{ form.field_value_0 }}
+                    </label>
+                </div>
             </div>
         </fieldset>
-        <fieldset  class="fieldset addRows">
-            <legend>Sur les champs date</legend>
-            <div class="group grid-x grid-padding-x">
-                <label class="cell medium-2">
-                    <span>{{ form.date_0.label.text }}</span>
-                    {{ form.date_0 }}
-                </label>
-                <label class="cell medium-3">
-                    <span>{{ form.custom_0.label.text }}</span>
-                    {{ form.custom_0 }}
-                </label>
-                <label class="cell medium-2">
-                    <span>{{ form.begin_0.label.text }}</span>
-                    {{ form.begin_0 }}
-                </label>
-                <label class="cell medium-2">
-                    <span>{{ form.end_0.label.text }}</span>
-                    {{ form.end_0 }}
-                </label>
-            </div>
-        </fieldset>
-        <div><button type="submit" class="button primary">envoyer</button></div>
+        <div><input type="submit" class="button primary" name="submit" value="envoyer" /></div>
     </form>
 {% endblock %}
 {% block js %}
-   <script src="{{ url_for('static', filename="js/filter_add_fields.js") }}"></script>
+    {#
+    <script type="text/template" id="dataFields">{{ data_field_0 }}</script>
+    <script type="text/template" id="dataComparatorNormal">{{ comparator.normal }}</script>
+    <script type="text/template" id="dataComparatorDate">{{ comparator.date }}</script>
+    #}
+
+    <script type="text/template" id="tplDoubleInputText">
+        <label class="medium-5">
+            <span>[%= labelA %]</span>
+            <input type="text" name="[%= nameInputA %]" />
+        </label>
+        <label class="medium-5">
+            <span>[%= labelB %]</span>
+            <input type="text" name="[%= nameInputB %]" />
+        </label>
+    </script>
+
+    <script type="text/template" id="tplInputText">
+            <label class="width-100">
+                <span>[%= label %]</span>
+                <input type="text" name="[%= nameInput %]" required />
+            </label>
+    </script>
+
+    <script type="text/template" id="tplButton">
+            <div class="cell medium-3 flex-container align-bottom">
+                <button type="button" class="add button primary expanded">ajouter</button>
+            </div>
+    </script>
+
+    <script type="module" src="{{ url_for('static', filename="js/TemplateEngine.js") }}"></script>
+    <script type="module" src="{{ url_for('static', filename="js/filter_fields/FilterFieldsModel.js") }}"></script>
+    <script type="module" src="{{ url_for('static', filename="js/filter_fields/FilterFieldsView.js") }}"></script>
+    <script type="module" src="{{ url_for('static', filename="js/filter_fields/FilterFieldsController.js") }}"></script>
+    <script type="module" src="{{ url_for('static', filename="js/app.js") }}"></script>
 {% endblock %}
