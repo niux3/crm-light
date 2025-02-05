@@ -6,7 +6,7 @@ from pprint import pprint
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from app.companies.models import Company, Employee
 from app.marketing.models import DiffusionList
-from app.marketing.forms.diffusion_list_form import DiffusionListForm
+from app.marketing.forms.diffusion_list_form import DiffusionListForm, data_field_0, filters, date_filter
 from app.core.libs.base_views import BaseView
 from app import db
 
@@ -29,32 +29,30 @@ def index():
 def add():
     form = DiffusionListForm()
     if request.method == 'POST':
-        data = dict(request.form)
-        date_fields = {"date", "custom", "begin", "end"}
-        pattern = re.compile(r'(?P<field>.+)_(?P<number>\d+)$')
+        relation_fields = ["relation"]
+        pattern = re.compile(r'(?P<field>field_?(filter|value|value_from|value_to)?)_(?P<number>\d+)$')
         grouped_data = {
-            "dates": defaultdict(dict),
-            "others": defaultdict(dict),
+            "fields": defaultdict(dict),
+            "relations": defaultdict(dict),
         }
-        for key, value in data.items():
+        for key, value in request.form.items():
             match = pattern.match(key)
             if match:
                 field = match.group("field")
                 number = match.group("number")
 
-                # Vérifier si le champ appartient aux dates ou aux autres
-                if field in date_fields:
-                    grouped_data["dates"][number][field] = value
+                if field in relation_fields:
+                    grouped_data["relations"][number][field] = value
                 else:
-                    grouped_data["others"][number][field] = value
+                    grouped_data["fields"][number][field] = value
         output_json = {
-            "dates": [grouped_data["dates"][num] for num in sorted(grouped_data["dates"].keys(), key=int)],
-            "others": [grouped_data["others"][num] for num in sorted(grouped_data["others"].keys(), key=int)],
-            "accepted": data.get('accepted')
+            "fields": [grouped_data["fields"][num] for num in sorted(grouped_data["fields"].keys(), key=int)],
+            "relations": [grouped_data["relations"][num] for num in sorted(grouped_data["relations"].keys(), key=int)],
+            "accepted": request.form.get('accepted')
         }
         diffusions_list = DiffusionList(**{
-            "name": data.get('name'),
-            "campaign_id": data.get("campaign_id"),
+            "name": request.form.get('name'),
+            "campaign_id": int(request.form.get("campaign_id")),
             "data" : json.dumps(output_json)
         })
         db.session.add(diffusions_list)
@@ -63,7 +61,12 @@ def add():
         flash("L'ajout de filtre a bien été pris en compte", "success")
         return redirect(url_for('diffusions_list.index'))
     ctx = {
-        'form': form
+        'form': form,
+        'data_field_0': json.dumps(data_field_0),
+        'comparator': {
+            'normal': json.dumps(filters),
+            'date': json.dumps(date_filter)
+        }
     }
     return render_template('marketing/add.html', **ctx)
 

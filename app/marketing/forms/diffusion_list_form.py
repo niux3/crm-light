@@ -1,5 +1,6 @@
 import wtforms
 from flask_wtf import FlaskForm
+from app.marketing.models import Campaign
 
 
 fields_users = { 
@@ -79,6 +80,11 @@ data_field_0 = [(i, v) for i, v in enumerate(["choisir un champ"] + list(fields_
 
 class DiffusionListForm(FlaskForm):
     name = wtforms.StringField("Nom", validators=[wtforms.validators.DataRequired()])
+    campaign_id = wtforms.SelectField(
+        "campagne", 
+        choices=lambda:[("", "choisir une campagne")] + [(r.id, r.name) for r in Campaign.query.all()],
+        validators=[wtforms.validators.DataRequired()]
+    )
     accepted = wtforms.RadioField("La fiche est acceptée si", choices=[(i, r) for i, r in enumerate(type_filter, 1)])
     field_0 = wtforms.SelectField("Champs", choices=data_field_0)
     field_filter_0 = wtforms.SelectField("Filtres", choices=[(i, r) for i, r in enumerate(filters)])
