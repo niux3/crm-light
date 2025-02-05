@@ -23,29 +23,18 @@ export class FilterFieldsController{
     }
 
     _onPrimaryChange(e){
-        let [ key, value ] = e.target.value.split('_'),
+        let value = parseInt(e.target.value, 10),
             translate = {
                 'company': 'société',
                 'user': 'employé'
             },
             dataFields = this._model.getDataFor('fields'),
-            suffixKeyData = 'Normal',
+            suffixKeyData = [13, 14, 15].some(t => value === t)? 'Date' :'Normal',
+            data = this._model.getDataFor(`comparator${suffixKeyData}`),
             template = null,
             idTpl = null,
             dataTpl = null
-        value = parseInt(value, 10)
 
-        switch(key){
-            case 'company':
-                suffixKeyData = [1, 2].some(t => value === t)? 'Date' : 'Normal'
-                console.log([1, 2].some(t => value === t))
-                break
-            case 'user':
-                suffixKeyData = [12, 13, 14].some(t => value === t)? 'Date' : 'Normal'
-                break
-        }
-        //let value = parseInt(e.target.value, 10),
-        let data = this._model.getDataFor(`comparator${suffixKeyData}`)
         if(suffixKeyData === 'Normal'){
             idTpl = 'tplInputText'
             dataTpl = {
@@ -61,6 +50,7 @@ export class FilterFieldsController{
                 'nameInputB': `field_value_to_${this._indexRow}`,
             }
         }
+
         template = document.getElementById(idTpl).textContent
         let target = document.querySelector(`*[name="field_${this._indexRow}"]`).closest('.group').querySelector('.dynamicField')
         target.innerHTML = this._engine.render(template, dataTpl)

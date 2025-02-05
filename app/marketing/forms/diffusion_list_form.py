@@ -71,10 +71,11 @@ type_filter = [
     "Au moins une condition est remplie"
 ]
 
-data_field_0 = {                                                                                                                
-    'société': [(f'company_{i}', f'{r} (société)') for i, r in enumerate(fields_company.keys())],                                                                                   
-    'employé': [(f'user_{i}', f'{r} (employé)') for i, r in enumerate(fields_users.keys())],                                                                                   
-}
+# data_field_0 = {                                                                            
+    # 'société': [(f'company_{i}', f'{r} (société)') for i, r in enumerate(fields_company.keys())],                                                                                   
+    # 'employé': [(f'user_{i}', f'{r} (employé)') for i, r in enumerate(fields_users.keys())],                                                                                   
+# }
+data_field_0 = [(i, v) for i, v in enumerate(["choisir un champ"] + list(fields_users.keys()))]
 
 class DiffusionListForm(FlaskForm):
     name = wtforms.StringField("Nom", validators=[wtforms.validators.DataRequired()])
